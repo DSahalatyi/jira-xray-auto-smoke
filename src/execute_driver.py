@@ -1,7 +1,10 @@
 import os
+import time
 
 
 def execute_driver_instructions(execution_utility, driver_utility):
+    # Wait for web page redirection between executions
+    time.sleep(5)
     driver_utility.driver.get(os.getenv('TEST_PLAN_URL'))
     execution_utility.open_create_execution_window()
     execution_utility.fill_in_general_page()
