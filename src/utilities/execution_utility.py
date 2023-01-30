@@ -84,3 +84,7 @@ class ExecutionUtility:
         tests_to_remove = os.getenv('RELEASE_DEL_TESTS').split(',') if self.executable == 'Release' else \
             os.getenv('FINAL_DEL_TESTS').split(',')
         self.driver_utility.remove_items_from_hidden_select(test_xpath, tests_to_remove)
+
+    def press_create_button(self):
+        create_button_id = "create-issue-submit"
+        self.driver_utility.find_and_click_element(create_button_id)

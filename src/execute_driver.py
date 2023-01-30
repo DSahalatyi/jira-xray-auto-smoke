@@ -2,7 +2,7 @@ import os
 import time
 
 
-def execute_driver_instructions(execution_utility, driver_utility):
+def execute_driver_instructions(execution_utility, driver_utility, skip_confirmation):
     # Wait for web page redirection between executions
     time.sleep(5)
     driver_utility.driver.get(os.getenv('TEST_PLAN_URL'))
@@ -14,13 +14,12 @@ def execute_driver_instructions(execution_utility, driver_utility):
 
     execution_utility.process_details_page()
 
-    while True:
+    while not skip_confirmation:
         confirmation = input('Please confirm creation of a new test execution (y/n):\n')
         if confirmation == 'y':
-            create_button_id = "create-issue-submit"
-            driver_utility.find_and_click_element(create_button_id)
             break
         elif confirmation == 'n':
             print('Creation denied. Exiting...')
             exit()
         print('Please use y or n!')
+    execution_utility.press_create_button()
