@@ -17,14 +17,14 @@ def main():
     day_of_the_week = today.strftime('%A')
     created_execution_executable_and_url = dict()
 
-    driver_options, build_version = handle_launch_arguments()
+    driver_options, build_version, skip_confirmation = handle_launch_arguments()
 
     driver_utility = WDUtility(options=driver_options)
 
     executables = ['Release', 'Final'] if day_of_the_week in ('Monday', 'Thursday') else ['Release']
     for executable in executables:
         execution_utility = ExecutionUtility(build_version, driver_utility, executable, platform='PC')
-        execute_driver_instructions(execution_utility, driver_utility)
+        execute_driver_instructions(execution_utility, driver_utility, skip_confirmation)
 
         build_version = execution_utility.build_version
 
