@@ -19,7 +19,7 @@ pip install -r requirements.txt
 Before starting the script fill in .env file according to the .env.example
 ```
 cd ..\jira-xray-auto-smoke
-python main.py [-hl, --headless](run webdriver in headless mode), [-b, --build](specify build version, if not the latest)
+python main.py [-hl, --headless](run webdriver in headless mode), [-b, --build](specify build version, if not the latest), [-sconf, --skip_confirmation](create execution w/o confirmation from user)
 ```
 
 ### Workflow
