@@ -17,10 +17,9 @@ def execute_driver_instructions(execution_utility, driver_utility, skip_confirma
     while not skip_confirmation:
         confirmation = input('Please confirm creation of a new test execution (y/n):\n')
         if confirmation == 'y':
-            create_button_id = "create-issue-submit"
-            driver_utility.find_and_click_element(create_button_id)
             break
         elif confirmation == 'n':
             print('Creation denied. Exiting...')
             exit()
         print('Please use y or n!')
+    execution_utility.press_create_button()
